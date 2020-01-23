@@ -1,22 +1,51 @@
 /* ---- CHRONOMETER ---- */
 
-let chronometer = 30;
+let chronometer = 0;
 let intervalID;
 let score = 0;
 
 let secDec = document.getElementById("secDec");
 let secUni = document.getElementById("secUni");
+var minDec = document.getElementById('minDec');
+var minUni = document.getElementById('minUni');
 let startBtn = document.getElementById("next-start-button")
 let input = document.getElementById("next-answer")
+let winMusic = document.getElementById("win")
+let loseMusic = document.getElementById("lose")
+let endSound = document.getElementById("end-sound")
 
-function twoDigits(chronometer) {
-    if (chronometer < 10) {
-        return `0${chronometer}`
-    } else return `${chronometer}`
+winMusic.currentTime = 1;
+
+function printTime() {
+    printMinutes();
+    printSeconds();
+}
+
+function getMinutes() {
+    return Math.floor(chronometer / 60)
+   }
+
+function getSeconds() {
+   return chronometer % 60
+  }
+
+function twoDigits(val) {
+    if (val < 10) {
+        return `0${val}`
+    } else return `${val}`
 };
 
+function printMinutes() {
+    let minutes = getMinutes(chronometer);
+    let twoDigitsMinutes = twoDigits(minutes);
+     minDec.textContent = twoDigitsMinutes[0];
+     minUni.textContent = twoDigitsMinutes[1];
+ }
+
+
 function printSeconds() {
-    let twoDigitsSeconds = twoDigits(chronometer);
+    let seconds = getSeconds(chronometer);
+    let twoDigitsSeconds = twoDigits(seconds);
     secDec.textContent = twoDigitsSeconds[0];
     secUni.textContent = twoDigitsSeconds[1];
 }
@@ -84,7 +113,7 @@ let testArr = [
     </div>`, answer: 4},
 ]
 
-
+let arr5 = [];
 let nextProblem = document.getElementById("next-problem");
 let rightAnswer;
 
@@ -93,26 +122,32 @@ function randomNum(max){
     return Math.round(Math.random() * max);
 }
 
+function fillArr(){
+    let newArr = [...testArr];
+    let index;
+    for (let i=0; i<5; i++){
+        index = randomNum(newArr.length-i);
+        arr5.push(newArr[index]);
+        newArr.splice(index,1)
+    }
+}
 
-function randomQuestion(){
-    let newArr = [...testArr]
-    let pair = newArr[randomNum(newArr.length-1)]
-    let image = pair.question;
-    rightAnswer = pair.answer;
 
-    nextProblem.innerHTML = image;
-    
-
+function questionAppear(){
+    nextProblem.innerHTML = arr5[0].question;
+    rightAnswer = arr5[0].answer;
 }
 
 
 input.onkeypress = function(event) {
     if (event.keyCode == 13 && input.value == rightAnswer) {
         score++;
-        randomQuestion();
+        arr5.shift();
+        questionAppear();
         input.value="";
     } else if (event.keyCode == 13 && input.value != rightAnswer) {
-        randomQuestion();
+        arr5.shift();
+        questionAppear();
         input.value="";
     }
 }
@@ -121,8 +156,8 @@ input.onkeypress = function(event) {
 //the player has a good score
 function goodScore(){
     nextProblem.removeAttribute("id");
-    nextProblem.setAttribute("id", "next-end");
-    nextProblem.innerText = `${score} correct answers in 30sec. Great Job!`;
+    nextProblem.setAttribute("id", "next-win");
+    nextProblem.innerText = `${minDec.textContent}${minUni.textContent}:${secDec.textContent}${secUni.textContent} to get ${score}/5 good answers. Great Job!`;
     document.getElementById("next-character").innerHTML = `<img src="./img/happy.png" alt="happy" id="happy">`
     nextProblem.innerHTML +=
     `
@@ -131,6 +166,8 @@ function goodScore(){
         <button><a href="menu.html">HOME</a></button>
     </div>
     `;
+    endSound.play()
+    winMusic.play();
     input.onkeypress = function() {return ""}
 }
 
@@ -138,8 +175,8 @@ function goodScore(){
 //the player has a bad score
 function badScore(){
     nextProblem.removeAttribute("id");
-    nextProblem.setAttribute("id", "next-end");
-    nextProblem.innerText = `${score} correct answers in 30sec. Keep Trying...`;
+    nextProblem.setAttribute("id", "next-lose");
+    nextProblem.innerText = `${minDec.textContent}${minUni.textContent}:${secDec.textContent}${secUni.textContent} to get ${score}/5 good answers. Keep Trying...`;
     document.getElementById("next-character").innerHTML = `<img src="./img/sad.png" alt="sad">`
     nextProblem.innerHTML +=
     `
@@ -148,21 +185,24 @@ function badScore(){
         <button><a href="menu.html">HOME</a></button>
     </div>
     `;
+    endSound.play()
+    loseMusic.play();
     input.onkeypress = function() {return ""}
 }
 
 
 function startGame() {
-    randomQuestion();
+    fillArr();
+    questionAppear();
     inputFocus();
     intervalID = setInterval(() => {
-        chronometer--;
-        printSeconds();
-        if (chronometer === 0) {
+        chronometer++;
+        printTime();
+        if (arr5.length === 0) {
             clearInterval(intervalID);
-            if (score < 4) {
-                badScore();
-            } else goodScore();
+            if (chronometer < 250 && score >= 4) {
+                goodScore();
+            } else badScore();
         }
     },1000);
 }

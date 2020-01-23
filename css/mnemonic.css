@@ -79,7 +79,7 @@ body {
 /* ---- DIV PROBLEM ---- */
 
 #mnemo-problem {
-    background: rgb(255, 240, 190, 0.5);
+    background: rgba(167, 253, 150, 0.5);
     height: 60vh;
     width: 60vw;
     position: absolute;
@@ -87,7 +87,7 @@ body {
     left: 50%;
     transform: translate(-50%, -60%);
     box-shadow: grey 5px 5px;
-    border:solid 1px rgb(255, 200, 50) ;
+    border:solid 1px rgb(119, 255, 131) ;
     font-family: 'PT Serif', serif;
     display: flex;
     flex-wrap: wrap;
@@ -118,8 +118,12 @@ body {
 }
 
 
-#mnemo-end {
-    background: lightseagreen;
+#mnemo-lose {
+    background-image: url(../img/lose.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.7;
     height: 60vh;
     width: 60vw;
     position: absolute;
@@ -130,8 +134,28 @@ body {
     border: solid 1px;
     text-align: center;
     line-height: 60vh;
-    font-size: 20px;
-    font-family: 'ZCOOL QingKe HuangYou', cursive;
+    font-size: 40px;
+    font-family: Inria Serif;
+}
+
+#mnemo-win {
+    background-image: url(../img/win.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+    height: 60vh;
+    width: 60vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    box-shadow: grey 5px 5px;
+    border: solid 1px;
+    text-align: center;
+    line-height: 60vh;
+    font-size: 40px;
+    font-family: Inria Serif;
 }
 
 #end-button {

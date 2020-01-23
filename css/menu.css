@@ -86,6 +86,7 @@ body {
 
 #main-second-list>li {
     font-size: 17px;
+    list-style: none;
 }
 
 /* ---- GAME LIST ANIMATION ---- */

@@ -8,6 +8,11 @@ let secDec = document.getElementById("secDec");
 let secUni = document.getElementById("secUni");
 let startBtn = document.getElementById("cm-start-button")
 let input = document.getElementById("cm-answer")
+let winMusic = document.getElementById("win")
+let loseMusic = document.getElementById("lose")
+let endSound = document.getElementById("end-sound")
+
+winMusic.currentTime = 1;
 
 function twoDigits(chronometer) {
     if (chronometer < 10) {
@@ -86,7 +91,7 @@ input.onkeypress = function(event) {
 //the player has a good score
 function goodScore(){
     cmProblem.removeAttribute("id");
-    cmProblem.setAttribute("id", "cm-end");
+    cmProblem.setAttribute("id", "cm-win");
     cmProblem.innerText = `${score} correct answers in 30sec. Great Job!`;
     document.getElementById("cm-character").innerHTML = `<img src="./img/happy.png" alt="happy" id="happy">`
     cmProblem.innerHTML +=
@@ -96,6 +101,8 @@ function goodScore(){
         <button><a href="menu.html">HOME</a></button>
     </div>
     `;
+    endSound.play()
+    winMusic.play();
     input.onkeypress = function() {return ""}
 }
 
@@ -104,7 +111,7 @@ function goodScore(){
 //the player has a bad score
 function badScore(){
     cmProblem.removeAttribute("id");
-    cmProblem.setAttribute("id", "cm-end");
+    cmProblem.setAttribute("id", "cm-lose");
     cmProblem.innerText = `${score} correct answers in 30sec. Keep Trying...`;
     document.getElementById("cm-character").innerHTML = `<img src="./img/sad.png" alt="sad">`
     cmProblem.innerHTML +=
@@ -114,6 +121,8 @@ function badScore(){
         <button><a href="menu.html">HOME</a></button>
     </div>
     `;
+    endSound.play()
+    loseMusic.play();
     input.onkeypress = function() {return ""}
 }
 

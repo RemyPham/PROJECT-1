@@ -10,6 +10,11 @@ var minDec = document.getElementById('minDec');
 var minUni = document.getElementById('minUni');
 let startBtn = document.getElementById("mnemo-start-button")
 let input = document.getElementById("mnemo-answer")
+let winMusic = document.getElementById("win")
+let loseMusic = document.getElementById("lose")
+let endSound = document.getElementById("end-sound")
+
+winMusic.currentTime = 1;
 
 function printTime() {
     printMinutes();
@@ -303,7 +308,7 @@ input.onkeypress = function(event) {
 //the player has a good score
 function goodScore(){
     mnemoProblem.removeAttribute("id");
-    mnemoProblem.setAttribute("id", "mnemo-end");
+    mnemoProblem.setAttribute("id", "mnemo-win");
     mnemoProblem.innerText = `${score}/36 correct answers. Great Job!`;
     document.getElementById("mnemo-character").innerHTML = `<img src="./img/happy.png" alt="happy" id="happy">`
     mnemoProblem.innerHTML +=
@@ -313,6 +318,8 @@ function goodScore(){
         <button><a href="menu.html">HOME</a></button>
     </div>
     `;
+    endSound.play()
+    winMusic.play();
     input.onkeypress = function() {return ""}
 }
 
@@ -320,7 +327,7 @@ function goodScore(){
 //the player has a bad score
 function badScore(){
     mnemoProblem.removeAttribute("id");
-    mnemoProblem.setAttribute("id", "mnemo-end");
+    mnemoProblem.setAttribute("id", "mnemo-lose");
     mnemoProblem.innerText = `${score}/36 correct answers. Keep Trying...`;
     document.getElementById("mnemo-character").innerHTML = `<img src="./img/sad.png" alt="sad">`
     mnemoProblem.innerHTML +=
@@ -330,6 +337,8 @@ function badScore(){
         <button><a href="menu.html">HOME</a></button>
     </div>
     `;
+    endSound.play()
+    loseMusic.play();
     input.onkeypress = function() {return ""}
 }
 
