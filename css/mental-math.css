@@ -1,0 +1,182 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position: relative;
+    background: grey url(https://subtlepatterns.com/patterns/geometry2.png) repeat 0 0;
+    animation: slide 20s linear infinite;
+}
+@keyframes slide {
+    from { background-position: 0 0; }
+    to { background-position: -400px 0; }
+}
+
+#math-container {
+    position: relative;
+    height: 85vh;
+}
+
+#main-header {
+    width: 100vw;
+    height: 15vh;
+    position: relative;
+}
+
+
+#main-header div {
+    width: 20%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#main-header img {
+    height: 100%;
+}
+
+/* ---- HEADER END ---- */
+/* ---- HEADER END ---- */
+
+
+#math-start-button {
+    font-family: Inria Serif;
+    background: lightgrey;
+    height: 10vh;
+    width: 200px;
+    position: absolute;
+    top: 5%;
+    left: 3%;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 40px;
+}
+
+/* ---- DIV TIMER ---- */
+
+#math-timer {
+    font-family: Inria Serif;
+    background: lightgrey;
+    height: 10vh;
+    width: 200px;
+    position: absolute;
+    top: 20%;
+    left: 3%;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 40px;
+}
+
+
+/* ---- DIV TIMER END ---- */
+/* ---- DIV TIMER END ---- */
+
+
+/* ---- DIV PROBLEM ---- */
+
+#math-problem {
+    height: 60vh;
+    width: 60vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    box-shadow: grey 5px 5px;
+    border: solid 1px rgb(253, 159, 159);
+    text-align: center;
+    line-height: 60vh;
+    font-size: 150px;
+    font-family: 'Montserrat', sans-serif;
+    background : rgb(252, 207, 213, 0.5)
+}
+
+#math-end {
+    background: lightseagreen;
+    height: 60vh;
+    width: 60vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    box-shadow: grey 5px 5px;
+    border: solid 1px;
+    text-align: center;
+    line-height: 60vh;
+    font-size: 20px;
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
+}
+
+#end-button {
+    display: flex;
+    height: auto;
+    width: 50%;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    justify-content: space-between;
+}
+
+#end-button>button {
+    display: block;
+    height: 50px;
+    width: 180px;
+    font-size: large;
+    font-family: Inria Serif;
+    box-shadow: grey 5px 5px 0 0;
+}
+
+/* ---- DIV PROBLEM END ---- */
+/* ---- DIV PROBLEM END ---- */
+
+
+/* ---- DIV INPUT ---- */
+
+#math-answer {
+    border: 1px solid;
+    text-align: center;
+    font-size: 30px;
+}
+
+#answer-area {
+    display: flex;
+    width: 50vw;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* ---- DIV INPUT END ---- */
+/* ---- DIV INPUT END ---- */
+
+
+/* ---- DIV CHARACTER ---- */
+
+#math-character {
+    width: 15vw;
+    height: 40vh;
+    position: absolute;
+    right:4%;
+    bottom:4%;
+}
+
+#math-character img {
+    height: 100%;
+    position: absolute;
+    right:0;
+}
+
+#happy {
+    animation: happy 0.5s ease infinite alternate;
+}
+@keyframes happy {
+    from {margin: 10px}
+    to {margin: 20px 10px 0px 10px}
+}

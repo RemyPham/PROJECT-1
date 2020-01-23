@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position: relative;
+    background: grey url(https://subtlepatterns.com/patterns/geometry2.png) repeat 0 0;
+    animation: slide 20s linear infinite;
+}
+@keyframes slide {
+    from { background-position: 0 0; }
+    to { background-position: -400px 0; }
+}
+
+#main-header {
+    width: 100vw;
+    height: 15vh;
+    position: relative;
+}
+
+
+#main-header div {
+    width: 20%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#main-header img {
+    height: 100%;
+}
+
+#main-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 70vh;
+    width: 70vw;
+    border: solid lightgrey;
+    box-shadow: grey 5px 5px 0 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, +20%);
+}
+
+#main-menu {
+    height: 90%;
+    width: 20%;
+}
+
+#main-menu h3 {
+    margin: 20px;
+    text-decoration: underline;
+}
+
+
+#main-list {
+    list-style: inside;
+}
+
+#main-list>li {
+    margin: 40px 0;
+    font-size: 18px;
+}
+
+
+#main-menu li span {
+    font-size: 15px;
+}
+
+#main-menu a {
+    text-decoration: none;
+    color: black;
+}
+
+
+#main-second-list {
+    margin-left: 10%;
+    margin-top: 10%;
+}
+
+#main-second-list>li {
+    font-size: 17px;
+}
+
+/* ---- GAME LIST ANIMATION ---- */
+/* ---- GAME LIST ANIMATION ---- */
+
+#game-1:hover {
+    animation: change-red 0.5s infinite ease;
+}
+@keyframes change-red {
+    from {color:black}
+    to {color: red}
+}
+
+#game-2:hover {
+    animation: change-yellow 0.5s infinite ease;
+}
+@keyframes change-yellow {
+    from {color:black}
+    to {color: rgb(207, 207, 40)}
+}
+
+#game-3:hover {
+    animation: change-green 0.5s infinite ease;
+}
+@keyframes change-green {
+    from {color:black}
+    to {color: green}
+}
+
+#game-4:hover {
+    animation: change-blue 0.5s infinite ease;
+}
+@keyframes change-blue {
+    from {color:black}
+    to {color: blue}
+}
+
+#game-5:hover {
+    animation: change-purple 0.5s infinite ease;
+}
+@keyframes change-purple {
+    from {color:black}
+    to {color: violet}
+}
+
+/* ---- GAME LIST ANIMATION END ---- */
+/* ---- GAME LIST ANIMATION END ---- */
+
+#main-aside {
+    width: 50%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 25px;
+    border-radius: 10px;
+}
+
+#main-aside img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+#rules-container {
+    text-align: center;
+    padding: 10px 20px;
+    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+    background-size: 1800% 1800%;
+    animation: rainbow 10s ease infinite;
+    border-radius: 10px;
+    opacity: 0.7;
+}
+@keyframes rainbow { 
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+
+
