@@ -1,2 +1,6 @@
 let music = document.getElementById("bg-music")
-music.volume = 0.1
+
+setTimeout(function(){
+    music.play();
+}, 1000)
+music.volume = 0.1;
